@@ -1,13 +1,13 @@
 services:
   client:
-    image: asia-southeast1-docker.pkg.dev/<PROJECT>/<ARTIFACT>:latest
+    image: asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/frontend:latest
     build:
       dockerfile: Dockerfile
       context: ./FrontEnd
     networks:
       - ts-network
   server:
-    image: asia-southeast1-docker.pkg.dev/<PROJECT>/<ARTIFACT>:latest
+    image: asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/backend:latest
     build:
       dockerfile: Dockerfile
       context: ./BackEnd
