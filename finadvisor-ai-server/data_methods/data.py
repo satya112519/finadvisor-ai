@@ -18,14 +18,13 @@ def get_transactions_data():
 def check_valid_entity(user_id):
     df = get_users()
     df = df[df['UserID']==user_id]
-    print(df)
     if df.empty:
         return {"status":"false"}
-    data = df.loc[0].to_json()
+    data = df.iloc[0].to_json()
     return {"status":"true", "data": data}
 
 def get_user_name(user_id):
     df = get_users()
     df = df[df['UserID']==user_id]
-    data = df.iloc[0]['UserName']
+    data = df.iloc[0]['FirstName']+" "+df.iloc[0]['LastName']
     return data

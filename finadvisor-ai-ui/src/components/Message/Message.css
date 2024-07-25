@@ -97,11 +97,15 @@
   margin-right: 3px !important;
   margin-bottom: 3px !important;
   text-transform: none !important;
-  background: var(--lbg-color) !important;
-  
+  background: var(--background-color) !important;
+  border: 1px solid var(--lbg-color) !important;
+  color: var(--lbg-color) !important;
+  filter: drop-shadow(0 0 1rem var(--lbg-color-hover));
+
 }
 
 .actions-button:hover{
   cursor: pointer !important;
   background: green !important;
-}
+  color: var(--background-color) !important;
+} 

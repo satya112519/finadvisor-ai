@@ -1,40 +1,37 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import * as api from '../../api';
 
 import "./Join.css";
 
 const Join = () => {
+  const [user, setUser] = useState({});
   const [name, setName] = useState("olivia_sophia");
   const [psswd, setpsswd] = useState("1234567890");
-  var flag = false;
+  const [loginSuccessful, setLoginSuccessful] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   
   const handleLogin = async (e) => {
-    // e.preventdefault();
-    // axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+    e.preventDefault();
+    try {
+      const response = await api.validateLogin({"user_id": name});
+      const userData = JSON.parse(response.data.data);
+      setUser(userData);
 
-    axios.post(
-      'http://localhost:5400/login', 
-      {
-        "user_id": "anudeep_kadavergu"
-      }, 
-      {
-        headers: {
-            'Content-Type': 'application/json',
-        }
+      if (userData) {
+        setLoginSuccessful(true);
+        navigate('/chat', { state: { userData } }); 
+      } else {
+        setErrorMessage("Invalid login credentials. Please try again.");
+        setLoginSuccessful(false);
       }
-    )
-    .then((response) => {
-      
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  
-    return flag
+    } catch (error) {
+      setErrorMessage("An error occurred. Please try again.");
+      setLoginSuccessful(false);
+    }
   }
-
   return (
     <div className="joinOuterContainer">
       <div className="joinInnerContainer">
@@ -58,14 +55,10 @@ const Join = () => {
             onChange={(event) => setpsswd(event.target.value)}
           />
         </div>
-        <Link
-          onClick={handleLogin}
-          to={`/chat`}
-        >
-          <button className="button mt-20" type="submit">
-            LOGIN
-          </button>
-        </Link>
+        <button className="button mt-20" type="submit" onClick={handleLogin}>
+          LOGIN
+        </button>
+        {errorMessage && <p className="error">{errorMessage}</p>}
       </div>
     </div>
   );

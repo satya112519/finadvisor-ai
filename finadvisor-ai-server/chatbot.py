@@ -97,22 +97,26 @@ def getTransactionDetails(msg, entity_id):
     return df.to_json()
 
 def getResponse(msg, ints, intents_json, entity_id):
-    tag = ints[0]['intent']
-    list_of_intents = intents_json['intents']
-    for i in list_of_intents:
-        if i['tag'] == tag:
-            if tag == 'transaction_details':
-                result = getTransactionDetails(msg, entity_id)
-            else:
-                print(tag)
-                result = random.choice(i['responses'])
-                if tag == 'greeting':
-                    result = { "text": result, "user": "admin", "buttons": ["Personal Budgeting", "Portfolio Management", "Investments Recommendation", "Savings Optimization", "Debt Management", "Retirement Planning", "Expense Tracking", "Fraud Detection"]}
-                
-            if tag == 'options':
-                entity_name = get_user_name(entity_id)
-                result = result.replace("<Merchant_Name>", entity_name)
-            break
+    prob = float(ints[0]['probability'] )
+    if prob > 0.9:
+        tag = ints[0]['intent']
+        list_of_intents = intents_json['intents']
+        for i in list_of_intents:
+            if i['tag'] == tag:
+                if tag == 'transaction_details':
+                    result = getTransactionDetails(msg, entity_id)
+                else:
+                    print(tag)
+                    result = random.choice(i['responses'])
+                    if tag == 'greeting':
+                        result = { "text": result, "user": "admin", "buttons": ["Personal Budgeting", "Portfolio Management", "Investments Recommendation", "Savings Optimization", "Debt Management", "Retirement Planning", "Expense Tracking", "Fraud Detection"]}
+                    
+                if tag == 'options':
+                    entity_name = get_user_name(entity_id)
+                    result = result.replace("<Merchant_Name>", entity_name)
+                break
+    else:
+        result = "Sorry, I didn't understand that. Could you please rephrase?"
     return result
 
 def chatbot_response(msg, entity_id):

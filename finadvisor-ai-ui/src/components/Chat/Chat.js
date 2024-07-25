@@ -1,77 +1,40 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
-import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
 import Messages from "../Messages/Messages";
+import * as api from '../../api';
 
 import "./Chat.css";
 
 const Chat = ({ location }) => {
-  const [name, setName] = useState("Olivia, Sophia");
-  const [address, setAddress] = useState({})
-  const [psswd, setpsswd] = useState("");
+  const { state } = useLocation();
+  const userData = state?.userData || {};
+  const full_name = userData.LastName+', '+userData.FirstName
+  const add = userData.Address+", "+userData.City+", "+userData.Country+", "+userData.PostalCode;
+  const [name, setName] = useState( full_name || "Olivia, Sophia");
+  const [address, setAddress ] = useState(add || '49 Featherstone Street, London, UK, EC1Y 8SY')
+  const [ contact, setContact ] = useState(userData.Phone1 || "+44 20 7123 4567")
   const [message, setMessage] = useState("");
   const nextMessage = { "text": `Type or Select from below`, "user": "admin", "buttons": ["Personal Budgeting", "Portfolio Management", "Investments Recommendation", "Savings Optimization", "Debt Management", "Retirement Planning", "Expense Tracking", "Fraud Detection"]}
-  const [messages, setMessages] = useState([{ "text": `Hey👋 Olivia, Sophia. How can i help you?!`, "user": "admin", "buttons": ["Personal Budgeting", "Portfolio Management", "Investments Recommendation", "Savings Optimization", "Debt Management", "Retirement Planning", "Expense Tracking", "Fraud Detection"]}]);
-  const [users, setUsers] = useState([]);
+  const [messages, setMessages] = useState([{ "text": `Hey👋 ${name}. How can i help you?!`, "user": "admin", "buttons": ["Personal Budgeting", "Portfolio Management", "Investments Recommendation", "Savings Optimization", "Debt Management", "Retirement Planning", "Expense Tracking", "Fraud Detection"]}]);
 
-  const clickSendMessage = (message) => {
+  const clickSendMessage = async (message) => {
     if (message) {
-      axios.post(
-        'http://localhost:5400/process_query', 
-        {
-          "query": message,
-          "user_id": "olivia_sophia"
-        }, 
-        {
-          headers: {
-              'Content-Type': 'application/json',
-          }
-        }
-      )
-      .then((response) => {
-        // let k = messages
-        // k.push({'text': message, 'user': 'SOUTH HILLS'})
-        // k.push(response.data)
-        setMessages([...messages, {'text': message, 'user': 'Olivia, Sophia'}, response.data, nextMessage]);
-
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      const response = await api.processQuery({"query": message, "user_id": userData.UserID});
+      setMessages([...messages, {'text': message, 'user': name}, response.data, nextMessage]);
       
     }
     setMessage("")
   }
 
-  const sendMessage = (event) => {
-    // setMessages([...messages, {'text': message, 'user': 'SOUTH HILLS'}]);
+  const sendMessage = async (event) => {
     event.preventDefault();
     if (message) {
-      axios.post(
-        'http://localhost:5400/process_query', 
-        {
-          "query": message,
-          "user_id": "olivia_sophia"
-        }, 
-        {
-          headers: {
-              'Content-Type': 'application/json',
-          }
-        }
-      )
-      .then((response) => {
-        // let k = messages
-        // k.push({'text': message, 'user': 'SOUTH HILLS'})
-        // k.push(response.data)
-        setMessages([...messages, {'text': message, 'user': 'Olivia, Sophia'}, response.data]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-      
+      const response = await api.processQuery({"query": message, "user_id": userData.UserID});
+      setMessages([...messages, {'text': message, 'user': name}, response.data]); 
     }
     setMessage("")
     
@@ -85,9 +48,9 @@ const Chat = ({ location }) => {
       <div className="chat-wrapper">
         <div className="list-wrapper">
         <img src="lbglogo.png" alt="logo" width={250} height={100} />
-          <h2>Olivia, Sophia</h2>
-          <h4>49 Featherstone Street, London, UK, EC1Y 8SY</h4>
-          <h5>+44 20 7123 4567</h5>
+          <h2>{full_name}</h2>
+          <h4>{address}</h4>
+          <h5>{contact}</h5>
 
         </div>
         <div className="messages-wrapper">
