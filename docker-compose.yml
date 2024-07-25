@@ -1,0 +1,24 @@
+services:
+  client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./FrontEnd
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - ts-network
+  server:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./BackEnd
+    restart: always
+    ports:
+      - 5400:5400
+    networks:
+      - ts-network
+
+networks:
+  ts-network:
+    driver: bridge
+    

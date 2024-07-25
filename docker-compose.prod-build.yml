@@ -1,0 +1,20 @@
+services:
+  client:
+    image: asia-southeast1-docker.pkg.dev/<PROJECT>/<ARTIFACT>:latest
+    build:
+      dockerfile: Dockerfile
+      context: ./FrontEnd
+    networks:
+      - ts-network
+  server:
+    image: asia-southeast1-docker.pkg.dev/<PROJECT>/<ARTIFACT>:latest
+    build:
+      dockerfile: Dockerfile
+      context: ./BackEnd
+    networks:
+      - ts-network
+
+networks:
+  ts-network:
+    driver: bridge
+    
