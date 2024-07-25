@@ -12,11 +12,11 @@ const InfoBar = (props) => {
         <img src={onlineIcon} alt="online-img" className="onlineIcon" />
         <h3>FinAdvisor AI</h3>
       </div>
-      <div className="rightInnerContainer">
+      {/* <div className="rightInnerContainer">
         <a href="/">
           <img className="close-icon" src={closeIcon} alt="close-icon" />
         </a>
-      </div>
+      </div> */}
     </div>
   );
 };

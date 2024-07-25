@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Input.css";
 import { useSpeechRecognition } from 'react-speech-recognition';
+import SendIcon from '@mui/icons-material/Send';
 
 
 const Input = ({ message, setMessage, sendMessage }) => {
@@ -31,7 +32,7 @@ const Input = ({ message, setMessage, sendMessage }) => {
         {/* <button className="mic-button" onClick={(event) => sendMessage(event)} onDoubleClick={SpeechRecognition.startListening}><i className="fa fa-microphone fa-2x"></i></button> */}
 
         <button className="send-button" onClick={(event) => sendMessage(event)}>
-          Send
+          <SendIcon></SendIcon>
         </button>
       </form>
 

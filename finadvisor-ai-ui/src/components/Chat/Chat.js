@@ -13,7 +13,7 @@ const Chat = ({ location }) => {
   const { state } = useLocation();
   const userData = state?.userData || {};
   const full_name = userData.LastName+', '+userData.FirstName
-  const add = userData.Address+", "+userData.City+", "+userData.Country+", "+userData.PostalCode;
+  const add = userData.Address+", "+userData.City+", "+userData.Country+", "+userData.Zip;
   const [name, setName] = useState( full_name || "Olivia, Sophia");
   const [address, setAddress ] = useState(add || '49 Featherstone Street, London, UK, EC1Y 8SY')
   const [ contact, setContact ] = useState(userData.Phone1 || "+44 20 7123 4567")
