@@ -1,7 +1,7 @@
-tensorflow
-nltk
-datefinder
-numpy
-pandas
-fastapi
-flask
+tensorflow==2.16.1
+nltk==3.8.1
+datefinder==0.7.3
+numpy==1.26.4
+pandas==2.2.2
+fastapi==0.111.0
+Flask==3.0.3

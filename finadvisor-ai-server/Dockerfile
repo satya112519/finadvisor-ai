@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.12.3
 COPY . /app/BackEnd
 WORKDIR /app/BackEnd
 RUN pip install --upgrade pip
