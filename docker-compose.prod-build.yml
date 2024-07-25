@@ -3,14 +3,14 @@ services:
     image: asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/frontend:latest
     build:
       dockerfile: Dockerfile
-      context: ./FrontEnd
+      context: ./finadvisor-ai-ui
     networks:
       - ts-network
   server:
     image: asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/backend:latest
     build:
       dockerfile: Dockerfile
-      context: ./BackEnd
+      context: ./finadvisor-ai-server
     networks:
       - ts-network
 
