@@ -4,16 +4,15 @@ steps:
 
   # - name: 'docker/compose:1.27.4'
   #   args: [ '-f', 'docker-compose.prod-build.yml', 'push']
-    
-  # restart app in VM
+
   - name: 'gcr.io/cloud-builders/gcloud'
     id: Deploy App
     entrypoint: /bin/bash
     args:
     - '-c'
     - |
-      gcloud compute ssh root@instance-20240725-092624 --ssh-key-file=/builder/home/.ssh/id_rsa --zone=us-central1-c --command "sudo su && sh /root/app-restart.sh"
-
+      sh cloudbuild/cloudbuild-finadvisor-ai.sh || exit $?
+    
 # images:
 #   - 'asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/frontend:latest'
 #   - 'asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/backend:latest'
