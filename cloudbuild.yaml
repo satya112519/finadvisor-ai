@@ -11,7 +11,7 @@ steps:
     args:
     - '-c'
     - |
-      sh cloudbuild/cloudbuild-finadvisor-ai.sh || exit $?
+      sh finadvisor-ai-cicd/cloudbuild-finadvisor-ai.sh || exit $?
     
 # images:
 #   - 'asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/frontend:latest'
