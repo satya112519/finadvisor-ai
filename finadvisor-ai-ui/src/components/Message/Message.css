@@ -101,11 +101,10 @@
   border: 1px solid var(--lbg-color) !important;
   color: var(--lbg-color) !important;
   filter: drop-shadow(0 0 1rem var(--lbg-color-hover));
-
 }
 
-.actions-button:hover{
+.actions-button:hover {
   cursor: pointer !important;
-  background: green !important;
+  background: var(--lbg-color) !important;
   color: var(--background-color) !important;
-} 
+}
