@@ -1,0 +1,63 @@
+@import "../../App.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+
+.form {
+  display: flex;
+  border-top: 1px solid #d3d3d3;
+  vertical-align: bottom;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.input {
+  border: none;
+  border-radius: 20px;
+  padding: 0 20px;
+  width: 80%;
+  height: 60px;
+  font-family: "Montserrat", sans-serif;
+  background-color: rgb(241, 241, 241);
+  font-size: 0.9em;
+  margin-right: 10px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.send-button {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--lbg-color);
+  padding: 20px;
+  display: inline-block;
+  border: none;
+  width: 150px;
+  height: 60px;
+  border-radius: 20px;
+  margin-left: 5px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.mic-button {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--lbg-color);
+  /* padding: 20px; */
+  display: inline-block;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-left: 5px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.send-button:hover {
+  background: var(--lbg-color);
+  cursor: pointer;
+}
