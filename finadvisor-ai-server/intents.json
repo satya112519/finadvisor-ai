@@ -1,0 +1,76 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [ "Hi there", "How are you", "Is anyone there?", "Hey", "Hola", "Hello", "Good day" ],
+      "responses": [ "Hi there, how can I help you?" ],
+      "context": [ "send_greeting_message" ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [ "Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time" ],
+      "responses": [ "See you!", "Have a nice day", "Bye! Come back again soon." ],
+      "context": [ "send_goodbye_message" ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [ "Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me" ],
+      "responses": [ "Happy to help!", "Any time!", "My pleasure" ],
+      "context": [ "send_thanks_message" ]
+    },
+    {
+      "tag": "noanswer",
+      "patterns": [],
+      "responses": [ "Sorry, can't understand you", "Please give me more info", "Not sure I understand" ],
+      "context": [ "" ]
+    },
+    {
+      "tag": "options",
+      "patterns": [ "How you could help me?", "What you can do?", "What help you provide?", "How you can be helpful?", "What support is offered" ],
+      "responses": [ "Hello <Merchant_Name>, I am capable of providing you answers on questions on your business' transactions, funding and any generic questions pertaining to Payments. Feel free to ask me questions like How many transactions did my store have yesterday? or how much was I funded last night? or Can I know about chargeback process? or how can I avoid reserve funding?" ],
+      "context": [ ]
+    },
+   
+    {
+      "tag": "personal_budgeting",
+      "patterns": ["suggest me personal budgeting strategies", "personal", "budgeting"],
+      "responses": ["Based on your income of $60,000 and monthly expenses of $4,500, FinAdvisor AI suggests you allocate $1,000 towards savings and $500 towards investments each month. It also identified that you spend $800 on dining out, which could be reduced by $200 to help increase your savings."]
+    },
+    {
+      "tag": "portfolio_management",
+      "patterns": ["portfolio management", "portfolio", "management"],
+      "responses": ["FinAdvisor AI analyzed your current investment portfolio worth $50,000. It suggests rebalancing your portfolio by reducing your exposure to high-risk stocks from 70% to 50% and increasing your bond investments to provide more stability and diversification."]
+    },
+    {
+      "tag": "investment_recommendations",
+      "patterns": ["Investment Recommendations"],
+      "responses": ["Given your preference for moderate risk and a financial goal to buy a house in 5 years, FinAdvisor AI recommends investing in a mix of 60% index funds, 20% blue-chip stocks, and 20% government bonds. This strategy balances growth potential with risk management."]
+    },
+    {
+      "tag": "savings_optimization",
+      "patterns": ["Savings Optimization"],
+      "responses": ["Based on your monthly savings of $500, FinAdvisor AI found that you could earn a higher interest rate by switching from your current savings account with a 0.5% interest rate to a high-yield savings account offering 2.0%. This change could increase your annual savings growth by $90."]
+    },
+    {
+      "tag": "debt_management",
+      "patterns": ["Debt Management"],
+      "responses": ["With your current credit card debt of $10,000 at an interest rate of 18%, FinAdvisor AI recommends consolidating your debt with a personal loan at a lower interest rate of 10%. This could reduce your monthly payments by $150 and save you $1,200 in interest over a year."]
+    },
+    {
+      "tag": "retirement_planning",
+      "patterns": ["Retirement Planning"],
+      "responses": ["Based on your current age of 35, annual income of $70,000, and retirement savings of $20,000, FinAdvisor AI projects that you need to save an additional $500 per month to meet your retirement goal of $1 million by age 65. It also suggests contributing to a Roth IRA for tax-free growth."]
+    },
+    {
+      "tag": "expense_tracking",
+      "patterns": ["Expense Tracking"],
+      "responses": ["FinAdvisor AI tracks your spending by categorizing transactions from your linked accounts. Last month, it noticed you spent $200 more on entertainment than usual. It sends alerts for unusual spending patterns and provides monthly summaries to help you stay on track with your budget."]
+    },
+    {
+      "tag": "fraud_detection",
+      "patterns": ["Fraud Detection"],
+      "responses": ["FinAdvisor AI monitors your accounts for any unusual activity. Last week, it detected a transaction of $500 at a store you’ve never shopped at before and immediately flagged it as potential fraud. You were notified promptly to review and take necessary action."]
+    }
+
+  ]
+}

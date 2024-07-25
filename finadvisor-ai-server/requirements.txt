@@ -1,0 +1,6 @@
+tensorflow
+nltk
+datefinder
+numpy
+pandas
+fastapi
