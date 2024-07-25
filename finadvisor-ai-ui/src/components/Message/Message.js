@@ -2,8 +2,7 @@ import React from "react";
 import ReactEmoji from "react-emoji";
 import ProfileIcon from "../../icons/profile.png";
 import RobotIcon from "../../icons/robot.png";
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
 import "./Message.css";
 
@@ -12,18 +11,23 @@ const Message = ({ message: { text, user, buttons }, clickSendMessage }) => {
   let isSentByAdmin = false;
 
   const handleClick = (text) => {
-    clickSendMessage(text)
-  }
+    clickSendMessage(text);
+  };
 
   const renderButtons = (buttons) => {
-
     const rows = [];
     for (let i = 0; i < buttons.length; i += 2) {
       const rowButtons = buttons.slice(i, i + 2);
       rows.push(
         <div key={i}>
           {rowButtons.map((button, index) => (
-            <Button key={index} variant="contained" className="actions-button" value={button} onClick={() => handleClick(button)}>
+            <Button
+              key={index}
+              variant="contained"
+              className="actions-button"
+              value={button}
+              onClick={() => handleClick(button)}
+            >
               {button}
             </Button>
           ))}
@@ -59,7 +63,9 @@ const Message = ({ message: { text, user, buttons }, clickSendMessage }) => {
       </div>
       <div className="messageBox backgroundLight">
         <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
-        <div style={{paddingBottom: '3px'}}>{buttons ? renderButtons(buttons) : <div></div>}</div>
+        <div style={{ paddingBottom: "3px" }}>
+          {buttons ? renderButtons(buttons) : <div></div>}
+        </div>
       </div>
     </div>
   );
