@@ -1,11 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import Messages from "./Messages"; // Adjust the path as necessary
+import Messages from "./Messages";
 import Message from "../Message/Message";
 import ScrollToBottom from "react-scroll-to-bottom";
 
-// Mock the dependencies
 jest.mock("react-scroll-to-bottom", () => ({ children }) => (
   <div>{children}</div>
 ));

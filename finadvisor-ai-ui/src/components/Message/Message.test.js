@@ -1,10 +1,9 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import Message from "./Message"; // Adjust the path as necessary
+import Message from "./Message";
 import Button from "@mui/material/Button";
 
-// Mock images
 jest.mock("../../icons/profile.png", () => "profile.png");
 jest.mock("../../icons/robot.png", () => "robot.png");
 

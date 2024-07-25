@@ -2,10 +2,9 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import Chat from "./Chat"; // Adjust the path as necessary
+import Chat from "./Chat";
 import * as api from "../../api";
 
-// Mock the dependencies
 jest.mock("react-helmet", () => ({
   Helmet: ({ children }) => <>{children}</>,
 }));
@@ -34,6 +33,45 @@ jest.mock("../Messages/Messages", () => ({ messages }) => (
     ))}
   </div>
 ));
+
+describe("Chat Component with empty data", () => {
+  const mockUserData = {
+    UserID: "user-123",
+  };
+
+  const mockLocationState = {
+    state: {},
+  };
+
+  beforeEach(() => {
+    require("react-router-dom").useLocation.mockReturnValue(mockLocationState);
+  });
+
+  test("renders Chat component with initial state", () => {
+    render(<Chat />);
+  });
+});
+describe("Chat Component with empty data", () => {
+  const mockUserData = {
+    UserID: "user-123",
+  };
+
+  const mockLocationState = {
+    state: {
+      Zip: "12345",
+      Phone1: "123-456-7890",
+      UserID: "user-123",
+    },
+  };
+
+  beforeEach(() => {
+    require("react-router-dom").useLocation.mockReturnValue(mockLocationState);
+  });
+
+  test("renders Chat component with initial state", () => {
+    render(<Chat />);
+  });
+});
 
 describe("Chat Component", () => {
   const mockUserData = {
