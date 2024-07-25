@@ -6,7 +6,7 @@ services:
     networks:
       - ts-network
     environment:
-      - REACT_APP_API_URL=http://localhost:81/
+      - API_URL=http://localhost:81/
   server:
     image: asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/backend:latest
     ports:
