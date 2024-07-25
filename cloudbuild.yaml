@@ -1,0 +1,38 @@
+steps:
+  - name: 'docker/compose:1.27.4'
+    args: ['-f', 'docker-compose.prod-build.yml', 'build', '--parallel']
+
+  - name: 'docker/compose:1.27.4'
+    args: [ '-f', 'docker-compose.prod-build.yml', 'push']
+    
+  # Deploy the frontend Docker image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud run deploy frontend-service \
+        --image gcr.io/$PROJECT_ID/frontend:latest \
+        --platform managed \
+        --region $REGION \
+        --allow-unauthenticated
+    id: DeployFrontend
+
+  # Deploy the backend Docker image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud run deploy backend-service \
+        --image gcr.io/$PROJECT_ID/backend:latest \
+        --platform managed \
+        --region $REGION \
+        --allow-unauthenticated
+    id: DeployBackend
+
+images:
+  - 'gcr.io/$PROJECT_ID/frontend:latest'
+  - 'gcr.io/$PROJECT_ID/backend:latest'
+
+timeout: '1200s'
