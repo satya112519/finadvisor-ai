@@ -27,7 +27,7 @@
     {
       "tag": "options",
       "patterns": [ "How you could help me?", "What you can do?", "What help you provide?", "How you can be helpful?", "What support is offered" ],
-      "responses": [ "Hello <Merchant_Name>, I am capable of providing you answers on questions on your transactions, investments and any generic questions pertaining to Advisory Services. Feel free to ask me questions like How many transactions I did yesterday? or categorize the expenses? or how can I avoid unsual spending?" ],
+      "responses": [ "Hello <USER_NAME>, I am capable of providing you answers on questions on your transactions, investments and any generic questions pertaining to Advisory Services. Feel free to ask me questions like How many transactions I did yesterday? or categorize the expenses? or how can I avoid unsual spending?" ],
       "context": [ ]
     },
    
@@ -59,7 +59,7 @@
     {
       "tag": "retirement_planning",
       "patterns": ["Retirement Planning"],
-      "responses": ["Based on your current age of <AGE>, annual income of <ANNUAL_INCOME>, and retirement savings of <RETIREMENT_SAVINGS>, FinAdvisor AI projects that you need to save an additional $500 per month to meet your retirement goal of $1 million by age 65. It also suggests contributing to a Roth IRA for tax-free growth."]
+      "responses": ["Based on your current age of <AGE>, annual income of $<ANNUAL_INCOME>, and retirement savings of $<RETIREMENT_SAVINGS>, FinAdvisor AI projects that you need to save an additional $500 per month to meet your retirement goal of $1 million by age 65. It also suggests contributing to a Roth IRA for tax-free growth."]
     },
     {
       "tag": "expense_tracking",

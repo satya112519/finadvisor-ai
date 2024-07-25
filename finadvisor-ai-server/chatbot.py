@@ -15,7 +15,7 @@ from tensorflow.keras.models import load_model
 import json
 import random
 
-from data_methods.data import check_valid_entity, get_transactions_data, get_user_name
+from data_methods.data import check_valid_entity, get_transactions_data, get_user_name, get_user_details
 
 app = FastAPI()
 
@@ -96,24 +96,30 @@ def getTransactionDetails(msg, entity_id):
         return result
     return df.to_json()
 
-def getResponse(msg, ints, intents_json, entity_id):
+def getResponse(msg, ints, intents_json, user_id):
     prob = float(ints[0]['probability'] )
     if prob > 0.9:
         tag = ints[0]['intent']
         list_of_intents = intents_json['intents']
         for i in list_of_intents:
             if i['tag'] == tag:
-                if tag == 'transaction_details':
-                    result = getTransactionDetails(msg, entity_id)
+                # if tag == 'transaction_details':
+                #     result = getTransactionDetails(msg, entity_id)
+                if tag == 'retirement_planning':
+                    data = get_user_details(user_id)
+                    data = json.loads(data)
+                    result = random.choice(i['responses'])
+                    result = result.replace("<AGE>", str(data['Age']))
+                    result = result.replace("<ANNUAL_INCOME>", str(data['AnnualIncome']))
+                    result = result.replace("<RETIREMENT_SAVINGS>", str(data['RetirementSavings']))
                 else:
-                    print(tag)
                     result = random.choice(i['responses'])
                     if tag == 'greeting':
                         result = { "text": result, "user": "admin", "buttons": ["Personal Budgeting", "Portfolio Management", "Investments Recommendation", "Savings Optimization", "Debt Management", "Retirement Planning", "Expense Tracking", "Fraud Detection"]}
                     
                 if tag == 'options':
-                    entity_name = get_user_name(entity_id)
-                    result = result.replace("<Merchant_Name>", entity_name)
+                    user_name = get_user_name(user_id)
+                    result = result.replace("<USER_NAME>", user_name)
                 break
     else:
         result = "Sorry, I didn't understand that. Could you please rephrase?"

@@ -11,7 +11,6 @@ def get_users():
 def get_transactions_data():
     file_name = 'data/data.csv'
     df = read_data_file(file_name)
-    df['EntityID'] = df['EntityID'].apply(int)
     df = df.applymap(str)
     return df
 
@@ -22,6 +21,14 @@ def check_valid_entity(user_id):
         return {"status":"false"}
     data = df.iloc[0].to_json()
     return {"status":"true", "data": data}
+
+def get_user_details(user_id):
+    df = get_transactions_data()
+    df = df[df['UserID']==user_id]
+    if df.empty:
+        return None
+    data = df.iloc[0].to_json()
+    return data
 
 def get_user_name(user_id):
     df = get_users()

@@ -7,6 +7,7 @@ services:
       - ts-network
     environment:
       - API_URL=http://35.188.50.151:81/
+      - REACT_APP_API_URL=http://35.188.50.151:81/
   server:
     image: asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/backend:latest
     ports:
