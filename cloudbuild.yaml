@@ -1,9 +1,9 @@
 steps:
-  # - name: 'docker/compose:1.27.4'
-  #   args: ['-f', 'docker-compose.prod-build.yml', 'build', '--parallel']
+  - name: 'docker/compose:1.27.4'
+    args: ['-f', 'docker-compose.prod-build.yml', 'build', '--parallel']
 
-  # - name: 'docker/compose:1.27.4'
-  #   args: [ '-f', 'docker-compose.prod-build.yml', 'push']
+  - name: 'docker/compose:1.27.4'
+    args: [ '-f', 'docker-compose.prod-build.yml', 'push']
 
   - name: 'gcr.io/cloud-builders/gcloud'
     id: Deploy App
@@ -13,9 +13,9 @@ steps:
     - |
       sh finadvisor-ai-cicd/cloudbuild-finadvisor-ai.sh || exit $?
     
-# images:
-#   - 'asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/frontend:latest'
-#   - 'asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/backend:latest'
+images:
+  - 'asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/frontend:latest'
+  - 'asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/backend:latest'
 
 options:
   logging: CLOUD_LOGGING_ONLY
