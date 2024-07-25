@@ -2,19 +2,21 @@ services:
   client:
     build:
       dockerfile: Dockerfile.dev
-      context: ./FrontEnd
-    restart: always
+      context: ./finadvisor-ai-ui
     ports:
       - 3000:3000
+    volumes:
+      - ./finadvisor-ai-ui:/app
     networks:
       - ts-network
   server:
     build:
       dockerfile: Dockerfile.dev
-      context: ./BackEnd
-    restart: always
+      context: ./finadvisor-ai-server
     ports:
       - 5400:5400
+    volumes:
+      - ./finadvisor-ai-server:/app
     networks:
       - ts-network
 

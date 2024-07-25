@@ -1,8 +1,10 @@
 steps:
   - name: 'docker/compose:1.27.4'
+    id: Build App Images
     args: ['-f', 'docker-compose.prod-build.yml', 'build', '--parallel']
 
   - name: 'docker/compose:1.27.4'
+    id: Push App Images
     args: [ '-f', 'docker-compose.prod-build.yml', 'push']
 
   - name: 'gcr.io/cloud-builders/gcloud'

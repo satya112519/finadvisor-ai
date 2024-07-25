@@ -28,4 +28,4 @@ fi
 set -x
 gcloud compute scp --zone=$VM_ZONE docker-compose.prod-run.yml cloud_build@$VM_NAME:docker-compose.yml
 gcloud compute scp --zone=$VM_ZONE finadvisor-ai-cicd/app-restart.sh cloud_build@$VM_NAME:app-restart.sh
-gcloud compute ssh --zone=$VM_ZONE cloud_build@$VM_NAME  --command "sudo bash app-restart.sh"
+gcloud compute ssh --zone=$VM_ZONE cloud_build@$VM_NAME  --command "sudo sh app-restart.sh"
