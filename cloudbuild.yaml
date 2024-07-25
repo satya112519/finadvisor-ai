@@ -6,30 +6,30 @@ steps:
     args: [ '-f', 'docker-compose.prod-build.yml', 'push']
     
   # Deploy the frontend Docker image to Cloud Run
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        gcloud run deploy frontend-service \
-        --image asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/frontend:latest \
-        --platform managed \
-        --region asia-south1 \
-        --allow-unauthenticated
-    id: DeployFrontend
+  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  #   entrypoint: 'bash'
+  #   args:
+  #     - '-c'
+  #     - |
+  #       gcloud run deploy frontend-service \
+  #       --image asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/frontend:latest \
+  #       --platform managed \
+  #       --region asia-south1 \
+  #       --allow-unauthenticated
+  #   id: DeployFrontend
 
-  # Deploy the backend Docker image to Cloud Run
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        gcloud run deploy backend-service \
-        --image asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/backend:latest \
-        --platform managed \
-        --region asia-south1 \
-        --allow-unauthenticated
-    id: DeployBackend
+  # # Deploy the backend Docker image to Cloud Run
+  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  #   entrypoint: 'bash'
+  #   args:
+  #     - '-c'
+  #     - |
+  #       gcloud run deploy backend-service \
+  #       --image asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/backend:latest \
+  #       --platform managed \
+  #       --region asia-south1 \
+  #       --allow-unauthenticated
+  #   id: DeployBackend
 
 images:
   - 'asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/frontend:latest'

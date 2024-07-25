@@ -4,3 +4,4 @@ datefinder
 numpy
 pandas
 fastapi
+flask
