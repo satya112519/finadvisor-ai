@@ -12,7 +12,7 @@ steps:
     args:
     - '-c'
     - |
-      gcloud compute ssh root@instance-20240725-092624 --ssh-key-file=/builder/home/.ssh/id_rsa --zone=us-central1-c --command "cd /root && sh app-restart.sh"
+      gcloud compute ssh root@instance-20240725-092624 --ssh-key-file=/builder/home/.ssh/id_rsa --zone=us-central1-c --command "sudo su && cd /root && sh app-restart.sh"
 
 images:
   - 'asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/frontend:latest'
