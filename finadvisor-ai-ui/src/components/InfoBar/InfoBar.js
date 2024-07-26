@@ -2,6 +2,7 @@ import React from "react";
 
 import closeIcon from "../../icons/closeIcon.png";
 import onlineIcon from "../../icons/onlineIcon.png";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import "./InfoBar.css";
 
@@ -12,11 +13,11 @@ const InfoBar = (props) => {
         <img src={onlineIcon} alt="online-img" className="onlineIcon" />
         <h3>FinAdvisor AI</h3>
       </div>
-      {/* <div className="rightInnerContainer">
+      <div className="rightInnerContainer">
         <a href="/">
-          <img className="close-icon" src={closeIcon} alt="close-icon" />
+        <LogoutIcon sx={{color: "white"}}></LogoutIcon>
         </a>
-      </div> */}
+      </div>
     </div>
   );
 };
