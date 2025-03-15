@@ -16,8 +16,8 @@ steps:
       sh finadvisor-ai-cicd/cloudbuild-finadvisor-ai.sh || exit $?
     
 images:
-  - 'asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/frontend:latest'
-  - 'asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/backend:latest'
+  - 'asia-south1-docker.pkg.dev/tribal-joy-453705-i8/finadvisor-ai/frontend:latest'
+  - 'asia-south1-docker.pkg.dev/tribal-joy-453705-i8/finadvisor-ai/backend:latest'
 
 options:
   logging: CLOUD_LOGGING_ONLY
