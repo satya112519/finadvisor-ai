@@ -7,7 +7,7 @@ services:
     networks:
       - ts-network
   server:
-    image: asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/backend:latest
+    image: asia-south1-docker.pkg.dev/tribal-joy-453705-i8/finadvisor-ai/backend:latest
     build:
       dockerfile: Dockerfile
       context: ./finadvisor-ai-server
