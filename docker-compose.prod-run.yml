@@ -9,7 +9,7 @@ services:
       - API_URL=http://35.188.50.151:81/
       - REACT_APP_API_URL=http://35.188.50.151:81/
   server:
-    image: asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/backend:latest
+    image: asia-south1-docker.pkg.dev/tribal-joy-453705-i8/finadvisor-ai/backend:latest
     ports:
       - 81:5400
     networks:
