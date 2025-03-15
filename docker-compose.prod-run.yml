@@ -1,6 +1,6 @@
 services:
   client:
-    image: asia-south1-docker.pkg.dev/lloyds-hack-grp-35/finadvisor-ai/frontend:latest
+    image: asia-south1-docker.pkg.dev/tribal-joy-453705-i8/finadvisor-ai/frontend:latest
     ports:
       - 80:3000
     networks:
